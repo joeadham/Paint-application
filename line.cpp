@@ -23,6 +23,8 @@ QLineF Line::setLine() const
 void Line::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QLineF line = setLine();
+
+    painter->setPen(shapeColor);
     painter->drawLine(line);
 
     Q_UNUSED(option)

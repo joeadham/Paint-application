@@ -16,6 +16,7 @@ class Circle : public Shapes
 
 
 public:
+
     Circle(QObject *parent = 0);
     ~Circle();
 

@@ -33,9 +33,12 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    Square *sq;
+    Shapes *shape;
+    Square *square;
     Circle *circle;
     Line *line;
+    QPen pen;
+    QColor color;
 
 
 
@@ -55,11 +58,12 @@ private:
 
 
 private slots:
-//    void on_colorButton_clicked();
 
+    void on_colorButton_clicked();
     void on_squareButton_clicked();
     void on_circleButton_clicked();
     void on_lineButton_clicked();
     void on_searchButton_clicked();
+
 };
 #endif // MAINWINDOW_H

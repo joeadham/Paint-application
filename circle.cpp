@@ -18,9 +18,8 @@ QRectF Circle::boundingRect() const
 
 void Circle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    QRectF ellipse= boundingRect();
-    QBrush brush(getShapeColor());
-
+    QRectF ellipse = boundingRect();
+    painter->setPen(shapeColor);
     painter->drawEllipse(ellipse);
 
     Q_UNUSED(option)

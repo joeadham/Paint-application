@@ -16,14 +16,14 @@ Shapes::~Shapes()
 
 }
 
-void Shapes::setShapeColor(const QColor &newShapeColor)
+const QColor &Shapes::getColor() const
 {
-    ShapeColor = newShapeColor;
+    return shapeColor;
 }
 
-const QColor &Shapes::getShapeColor() const
+void Shapes::setColor(const QColor &newColor)
 {
-    return ShapeColor;
+    shapeColor = newColor;
 }
 
 void Shapes::mousePressEvent(QGraphicsSceneMouseEvent *event)

@@ -18,10 +18,8 @@ QRectF Square::boundingRect() const
 void Square::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QRectF rec = boundingRect();
-    QBrush brush(getShapeColor());
 
-
-    painter->fillRect(rec,brush);
+    painter->setPen(shapeColor);
     painter->drawRect(rec);
 
     Q_UNUSED(option)

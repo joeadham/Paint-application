@@ -11,7 +11,7 @@
 #include <QDebug>
 #include <QLine>
 
-class Line : public Shapes, public QGraphicsLineItem
+class Line : public Shapes
 {
 
 public:

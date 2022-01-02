@@ -15,12 +15,11 @@ public:
     Shapes(QObject *parent = 0);
     ~Shapes();
 
-    bool pressed;
-    QColor ShapeColor;
 
-    const QColor &getShapeColor() const;
 
-    void setShapeColor(const QColor &newShapeColor);
+    const QColor &getColor() const;
+    void setColor(const QColor &newColor);
+
     void setName(QString n);
     QString getName();
 
@@ -29,10 +28,16 @@ protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
+    QColor shapeColor = Qt::black;
+    QPen pen;
+    bool pressed;
+
+
 private slots:
 //    void itemSelected(QGraphicsItem *item);
 //    void textInserted(QGraphicsTextItem *item);
 //    void deleteItem();
+
 private:
     QString name;
 

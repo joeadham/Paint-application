@@ -30,16 +30,11 @@ MainWindow::~MainWindow()
 
 
 
-//void MainWindow::on_colorButton_clicked()
-//{
-//    QColor color = QColorDialog::getColor();
-//    if(color.isValid())
-//    {
-//        sq->setShapeColor(color);
-//        circle->setShapeColor(color);
-//    }
+void MainWindow::on_colorButton_clicked()
+{
+    color = QColorDialog::getColor(Qt::black);
 
-//}
+}
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
@@ -50,18 +45,18 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::on_squareButton_clicked()
 {
-    sq = new Square();
+    square = new Square();
     l=ui->sqLength->text();
     w=ui->sqWidth->text();
     n=ui->squareName->text();
 
-    sq->setLength(l.toInt());
-    sq->setWidth(w.toInt());
-    sq->setName(n);
+    square->setLength(l.toInt());
+    square->setWidth(w.toInt());
+    square->setName(n);
+    square->setColor(color);
 
-    vsquare.emplace_back(sq);
-
-    scene->addItem(sq);
+    vsquare.emplace_back(square);
+    scene->addItem(square);
 
 
 }
@@ -69,17 +64,17 @@ void MainWindow::on_squareButton_clicked()
 
 void MainWindow::on_circleButton_clicked()
 {
-    circle= new Circle();
+    circle = new Circle();
+
     l=ui->radius->text();
     n=ui->circleName->text();
 
-
     circle->setRadius(l.toInt());
     circle->setName(n);
+    circle->setColor(color);
 
 
-      vcircle.emplace_back(circle);
-
+    vcircle.emplace_back(circle);
     scene->addItem(circle);
 }
 
@@ -87,10 +82,8 @@ void MainWindow::on_circleButton_clicked()
 void MainWindow::on_lineButton_clicked()
 {
     line = new Line();
-    n=ui->lineName->text();
 
-    QPen myPen (Qt::green);
-    myPen.setWidth(10);
+    n=ui->lineName->text();
 
     x1=ui->x1->text();
     x2=ui->x2->text();
@@ -102,9 +95,10 @@ void MainWindow::on_lineButton_clicked()
     line->y1 =(y1.toInt());
     line->y2 =(y2.toInt());
     line->setName(n);
+    line->setColor(color);
 
-
-    scene->addLine(line->setLine(),myPen);
+    vline.emplace_back(line);
+    scene->addItem(line);
 }
 
 
@@ -119,6 +113,7 @@ void MainWindow::on_searchButton_clicked()
        {
            ui->infoname->setText(vcircle[i]->getName());
            ui->infoper->setText(QString::number(vcircle[i]->perimeter()));
+           ui->infoColor->setText(vcircle[i]->getColor().name());
            exist=true;
        }
 
@@ -128,16 +123,25 @@ void MainWindow::on_searchButton_clicked()
        {
            ui->infoname->setText(vsquare[i]->getName());
            ui->infoper->setText(QString::number(vsquare[i]->perimeter()));
+           ui->infoColor->setText(vsquare[i]->getColor().name(QColor::HexArgb));
            exist=true;
        }
    }
-   if(!exist)
-   {
-      QMessageBox::about(this,"searched name","not exist");
+   for(int i=0; i<(int)(vline.size());i++){
+       if(n==vline[i]->getName())
+       {
+           ui->infoname->setText(vline[i]->getName());
+           ui->infoper->setText(QString::number(vline[i]->getLineLength()));
+           ui->infoColor->setText(vline[i]->getColor().name());
+           exist=true;
+       }
+
    }
 
-
-
+   if(!exist)
+   {
+      QMessageBox::about(this,"Shape","Doesn't exit");
+   }
 
 
 }

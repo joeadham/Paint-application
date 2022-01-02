@@ -33,14 +33,14 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>500</y>
       <width>181</width>
-      <height>191</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="title">
-     <string>Square</string>
+     <string>Rectangle</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -177,14 +177,14 @@
    <widget class="QPushButton" name="searchButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>170</y>
-      <width>81</width>
+      <x>10</x>
+      <y>20</y>
+      <width>91</width>
       <height>29</height>
      </rect>
     </property>
     <property name="text">
-     <string>Search</string>
+     <string>Search by name</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sortAsButton">
@@ -242,10 +242,10 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>250</x>
       <y>500</y>
       <width>191</width>
-      <height>191</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="title">
@@ -279,7 +279,7 @@
     <widget class="QPushButton" name="circleButton">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>50</x>
        <y>150</y>
        <width>91</width>
        <height>31</height>
@@ -318,7 +318,7 @@
       <x>480</x>
       <y>500</y>
       <width>191</width>
-      <height>191</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="title">
@@ -458,9 +458,9 @@
    <widget class="QLineEdit" name="searchName">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>130</y>
-      <width>81</width>
+      <x>10</x>
+      <y>60</y>
+      <width>91</width>
       <height>26</height>
      </rect>
     </property>
@@ -468,7 +468,7 @@
    <widget class="QGroupBox" name="groupBox_4">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>710</x>
       <y>500</y>
       <width>191</width>
       <height>181</height>
@@ -519,7 +519,7 @@
       <item>
        <widget class="QLabel" name="label_12">
         <property name="text">
-         <string>perimeter</string>
+         <string>Perimeter</string>
         </property>
        </widget>
       </item>
@@ -545,7 +545,14 @@
       <item>
        <widget class="QLabel" name="label_13">
         <property name="text">
-         <string>color</string>
+         <string>Color</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="infoColor">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
@@ -559,11 +566,35 @@
      <x>0</x>
      <y>0</y>
      <width>1060</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionClose"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
