@@ -24,6 +24,7 @@ public:
 
     void setLength(int newLength);
     void setWidth(int newWidth);
+    float perimeter();
 
 private:
     int length;

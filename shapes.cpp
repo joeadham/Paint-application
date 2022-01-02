@@ -39,3 +39,11 @@ void Shapes::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     update();
     QGraphicsItem::mouseReleaseEvent(event);
 }
+
+void Shapes:: setName(QString n){
+    name=n;
+}
+
+QString Shapes::getName(){
+    return name;
+}

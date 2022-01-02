@@ -7,12 +7,14 @@
 #include "circle.h"
 #include "line.h"
 
+
 #include <QMainWindow>
 #include <QtGui>
 #include <QDialog>
 #include <QtCore>
 #include <QCompleter>
 #include <QGraphicsScene>
+#include<QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,9 +37,19 @@ private:
     Circle *circle;
     Line *line;
 
-    QString l,w;
+
+
+    QString l,w,n;
 
     QString x1,x2,y1,y2;
+
+    std::vector<std::unique_ptr<Circle>> vcircle;
+    std::vector<std::unique_ptr<Square>> vsquare;
+    std::vector<std::unique_ptr<Line>> vline;
+
+
+
+
 
     void resizeEvent(QResizeEvent *event);
 
@@ -48,5 +60,6 @@ private slots:
     void on_squareButton_clicked();
     void on_circleButton_clicked();
     void on_lineButton_clicked();
+    void on_searchButton_clicked();
 };
 #endif // MAINWINDOW_H

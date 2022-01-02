@@ -23,13 +23,15 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 
-    void setRadiusx(int newRadiusx);
+    void setRadius(int newRadius);
+    float perimeter();
+    int getRadius();
 
-    void setRadiusy(int newRadiusy);
+
 
 private:
-    int radiusx;
-    int radiusy;
+    int radius;
+
 };
 
 #endif // CIRCLE_H

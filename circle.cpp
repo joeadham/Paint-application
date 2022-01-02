@@ -13,7 +13,7 @@ Circle::~Circle()
 
 QRectF Circle::boundingRect() const
 {
-    return QRectF(0,0,radiusx,radiusy);
+    return QRectF(0,0,radius,radius);
 }
 
 void Circle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -27,12 +27,13 @@ void Circle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     Q_UNUSED(widget)
 }
 
-void Circle::setRadiusx(int newRadiusx)
+void Circle::setRadius(int newRadius)
 {
-    radiusx = newRadiusx;
+    radius = newRadius;
 }
 
-void Circle::setRadiusy(int newRadiusy)
-{
-    radiusy = newRadiusy;
+float Circle::perimeter(){
+    return (3.14*2*radius);
 }
+
+int Circle::getRadius(){return radius;}

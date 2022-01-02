@@ -21,6 +21,8 @@ public:
     const QColor &getShapeColor() const;
 
     void setShapeColor(const QColor &newShapeColor);
+    void setName(QString n);
+    QString getName();
 
 protected:
 
@@ -31,7 +33,8 @@ private slots:
 //    void itemSelected(QGraphicsItem *item);
 //    void textInserted(QGraphicsTextItem *item);
 //    void deleteItem();
-
+private:
+    QString name;
 
 };
 
