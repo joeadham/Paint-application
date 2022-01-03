@@ -7,7 +7,6 @@
 #include <QResizeEvent>
 #include <QDebug>
 
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -15,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    undoStack = new QUndoStack(this);
 
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
@@ -56,8 +56,9 @@ void MainWindow::on_squareButton_clicked()
     square->setColor(color);
 
     vsquare.emplace_back(square);
-    scene->addItem(square);
 
+    QUndoCommand *addCommand = new AddCommand(square, scene);
+    undoStack->push(addCommand);
 
 }
 
@@ -75,9 +76,11 @@ void MainWindow::on_circleButton_clicked()
 
 
     vcircle.emplace_back(circle);
-    scene->addItem(circle);
-}
 
+    QUndoCommand *addCommand = new AddCommand(circle, scene);
+    undoStack->push(addCommand);
+
+}
 
 void MainWindow::on_lineButton_clicked()
 {
@@ -98,7 +101,9 @@ void MainWindow::on_lineButton_clicked()
     line->setColor(color);
 
     vline.emplace_back(line);
-    scene->addItem(line);
+
+    QUndoCommand *addCommand = new AddCommand(line, scene);
+    undoStack->push(addCommand);
 }
 
 
@@ -143,6 +148,18 @@ void MainWindow::on_searchButton_clicked()
       QMessageBox::about(this,"Shape","Doesn't exit");
    }
 
+}
 
+
+
+void MainWindow::on_redoButton_clicked()
+{
+    undoStack->redo();
+}
+
+
+void MainWindow::on_undoButton_clicked()
+{
+    undoStack->undo();
 }
 

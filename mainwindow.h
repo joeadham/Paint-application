@@ -6,7 +6,7 @@
 #include "shapes.h"
 #include "circle.h"
 #include "line.h"
-
+#include<commands.h>
 
 #include <QMainWindow>
 #include <QtGui>
@@ -15,6 +15,8 @@
 #include <QCompleter>
 #include <QGraphicsScene>
 #include<QVector>
+#include<QUndoCommand>
+#include<QUndoStack>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -39,7 +41,7 @@ private:
     Line *line;
     QPen pen;
     QColor color;
-
+    QUndoStack *undoStack = nullptr;
 
 
     QString l,w,n;
@@ -64,6 +66,7 @@ private slots:
     void on_circleButton_clicked();
     void on_lineButton_clicked();
     void on_searchButton_clicked();
-
+    void on_redoButton_clicked();
+    void on_undoButton_clicked();
 };
 #endif // MAINWINDOW_H

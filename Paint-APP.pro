@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     circle.cpp \
+    commands.cpp \
     line.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     circle.h \
+    commands.h \
     line.h \
     mainwindow.h \
     pen.h \
