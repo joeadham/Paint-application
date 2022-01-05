@@ -17,7 +17,7 @@
 #include<QVector>
 #include<QUndoCommand>
 #include<QUndoStack>
-
+#include<QCloseEvent>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -30,7 +30,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool isChanged() const { return changed; }
 
+    bool saveImage(const QString &filename, const char *fileformat);
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +44,9 @@ private:
     QPen pen;
     QColor color;
     QUndoStack *undoStack = nullptr;
+     QImage image;
+     QImage backupImage;
+    bool changed;
 
 
     QString l,w,n;
@@ -54,13 +59,11 @@ private:
 
 
 
-
-
     void resizeEvent(QResizeEvent *event);
 
 
 private slots:
-
+void closeEvent (QCloseEvent *event);
     void on_colorButton_clicked();
     void on_squareButton_clicked();
     void on_circleButton_clicked();
@@ -68,5 +71,11 @@ private slots:
     void on_searchButton_clicked();
     void on_redoButton_clicked();
     void on_undoButton_clicked();
+    void resizeImage(QImage *image, const QSize &newSize);
+void saveAsBitmap() ;
+    bool trySave();
+    bool saveDrawing(const QByteArray &fileFormat);
+
+    void on_SaveButton_clicked();
 };
 #endif // MAINWINDOW_H
