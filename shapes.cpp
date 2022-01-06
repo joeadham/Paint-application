@@ -47,3 +47,13 @@ void Shapes:: setName(QString n){
 QString Shapes::getName(){
     return name;
 }
+
+
+float Shapes::perimeter(){
+    return s ;
+}
+
+
+void Shapes::setS(float m){
+    s=m;
+}

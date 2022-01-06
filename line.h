@@ -25,7 +25,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
     int getLineLength() const;
-    void setLineLength(int newLineLength);
+    void setLineLength();
 
 
     QPoint getP1() const;

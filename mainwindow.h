@@ -18,6 +18,8 @@
 #include<QUndoCommand>
 #include<QUndoStack>
 #include<QCloseEvent>
+#include<QStack>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -33,6 +35,12 @@ public:
     bool isChanged() const { return changed; }
 
     bool saveImage(const QString &filename, const char *fileformat);
+
+    std::vector<std::shared_ptr<Shapes>> vshapes;
+
+   std::vector<std::shared_ptr<Shapes>> vundo;
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -53,9 +61,9 @@ private:
 
     QString x1,x2,y1,y2;
 
-    std::vector<std::unique_ptr<Circle>> vcircle;
-    std::vector<std::unique_ptr<Square>> vsquare;
-    std::vector<std::unique_ptr<Line>> vline;
+
+
+
 
 
 

@@ -25,7 +25,7 @@ public:
 
 
     void setRadius(int newRadius);
-    float perimeter();
+
     int getRadius();
 
 

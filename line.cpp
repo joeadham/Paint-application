@@ -1,5 +1,5 @@
 #include "line.h"
-
+#include <cmath>
 Line::Line(QObject *parent)
 {
 
@@ -36,9 +36,9 @@ int Line::getLineLength() const
     return lineLength;
 }
 
-void Line::setLineLength(int newLineLength)
+void Line::setLineLength()
 {
-    lineLength = newLineLength;
+    lineLength =sqrt(pow((x1-x2),2)-pow((y1-y2),2));
 }
 
 QPoint Line::getP1() const

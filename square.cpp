@@ -35,6 +35,3 @@ void Square::setWidth(int newWidth)
 {
  width = newWidth;
 }
-float Square::perimeter(){
-    return ((length+width)*2);
-}

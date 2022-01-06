@@ -22,6 +22,8 @@ public:
 
     void setName(QString n);
     QString getName();
+    float perimeter();
+    void setS(float m);
 
 protected:
 
@@ -40,6 +42,7 @@ private slots:
 
 private:
     QString name;
+    float s;
 
 };
 

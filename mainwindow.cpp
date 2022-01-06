@@ -54,8 +54,9 @@ void MainWindow::on_squareButton_clicked()
     square->setWidth(w.toInt());
     square->setName(n);
     square->setColor(color);
+    square->setS((l.toInt()+w.toInt())*2);
 
-    vsquare.emplace_back(square);
+    vshapes.emplace_back(square);
 
     QUndoCommand *addCommand = new AddCommand(square, scene);
     undoStack->push(addCommand);
@@ -71,11 +72,13 @@ void MainWindow::on_circleButton_clicked()
     n=ui->circleName->text();
 
     circle->setRadius(l.toInt());
+    circle->setS(3.14*2*l.toInt());
     circle->setName(n);
     circle->setColor(color);
 
 
-    vcircle.emplace_back(circle);
+
+     vshapes.emplace_back(circle);
 
     QUndoCommand *addCommand = new AddCommand(circle, scene);
     undoStack->push(addCommand);
@@ -99,8 +102,10 @@ void MainWindow::on_lineButton_clicked()
     line->y2 =(y2.toInt());
     line->setName(n);
     line->setColor(color);
+    line->setLineLength();
+    line->setS(line->getLineLength());
 
-    vline.emplace_back(line);
+     vshapes.emplace_back(line);
 
     QUndoCommand *addCommand = new AddCommand(line, scene);
     undoStack->push(addCommand);
@@ -113,35 +118,17 @@ void MainWindow::on_searchButton_clicked()
      bool exist=false;
 
 
-   for(int i=0; i<(int)(vcircle.size());i++){
-       if(n==vcircle[i]->getName())
+   for(int i=0; i<(int)( vshapes.size());i++){
+       if(n==vshapes[i]->getName())
        {
-           ui->infoname->setText(vcircle[i]->getName());
-           ui->infoper->setText(QString::number(vcircle[i]->perimeter()));
-           ui->infoColor->setText(vcircle[i]->getColor().name());
+           ui->infoname->setText(vshapes[i]->getName());
+           ui->infoper->setText(QString::number(vshapes[i]->perimeter()));
+           ui->infoColor->setText(vshapes[i]->getColor().name());
            exist=true;
        }
 
    }
-   for(int i=0; i<(int)(vsquare.size());i++){
-       if(n==vsquare[i]->getName())
-       {
-           ui->infoname->setText(vsquare[i]->getName());
-           ui->infoper->setText(QString::number(vsquare[i]->perimeter()));
-           ui->infoColor->setText(vsquare[i]->getColor().name(QColor::HexArgb));
-           exist=true;
-       }
-   }
-   for(int i=0; i<(int)(vline.size());i++){
-       if(n==vline[i]->getName())
-       {
-           ui->infoname->setText(vline[i]->getName());
-           ui->infoper->setText(QString::number(vline[i]->getLineLength()));
-           ui->infoColor->setText(vline[i]->getColor().name());
-           exist=true;
-       }
 
-   }
 
    if(!exist)
    {
@@ -154,13 +141,27 @@ void MainWindow::on_searchButton_clicked()
 
 void MainWindow::on_redoButton_clicked()
 {
+    if (vundo.size()!=0){
+    vshapes.emplace_back(vundo[vundo.size()-1]);
+    vundo.pop_back();}
+
     undoStack->redo();
 }
 
 
 void MainWindow::on_undoButton_clicked()
 {
-    undoStack->undo();
+    if(vshapes.size()==0)
+    {
+       QMessageBox::about(this,"Shape","No shapes");
+    }
+else{
+    vundo.emplace_back(vshapes[vshapes.size()-1]);
+    vshapes.pop_back();
+
+
+    undoStack->undo();}
+
 }
 
 

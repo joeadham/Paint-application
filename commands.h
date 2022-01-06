@@ -4,9 +4,11 @@
 #include<QUndoCommand>
 #include<QGraphicsScene>
 #include<shapes.h>
+#include"mainwindow.h"
 
 class AddCommand : public QUndoCommand
 {
+
 public:
 
     AddCommand(Shapes *item, QGraphicsScene *scene,
@@ -14,12 +16,18 @@ public:
 
     ~AddCommand();
 
+
+
     void undo() override;
     void redo() override;
 
+
 private:
+
     Shapes *myItem;
     QGraphicsScene *myGraphicsScene;
 };
 
 #endif // COMMANDS_H
+
+

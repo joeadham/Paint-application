@@ -31,8 +31,6 @@ void Circle::setRadius(int newRadius)
     radius = newRadius;
 }
 
-float Circle::perimeter(){
-    return (3.14*2*radius);
-}
+
 
 int Circle::getRadius(){return radius;}
