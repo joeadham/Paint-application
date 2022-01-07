@@ -48,10 +48,22 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::on_squareButton_clicked()
 {
+
+    bool exist=false;
     square = new Square();
     l=ui->sqLength->text();
     w=ui->sqWidth->text();
     n=ui->squareName->text();
+
+    if(l==""||n==""||w==""){
+        QMessageBox::about(this,"Paint","Please fill all shape information");
+
+
+
+    }
+else{
+
+    if(vshapes.size()==0){
 
     square->setLength(l.toInt());
     square->setWidth(w.toInt());
@@ -62,18 +74,84 @@ void MainWindow::on_squareButton_clicked()
     vshapes.emplace_back(square);
 
     QUndoCommand *addCommand = new AddCommand(square, scene);
-    undoStack->push(addCommand);
+    undoStack->push(addCommand);}
+
+
+    else{
+
+    for(int i=0; i<(int)( vshapes.size());i++){
+
+        if(n==vshapes[i]->getName())
+        {exist=true;}}
+    if(exist)
+        {
+            QMessageBox::about(this,"Name","this name is already exist...try different name");
+
+
+        }
+    else{
+        square->setLength(l.toInt());
+        square->setWidth(w.toInt());
+        square->setName(n);
+        square->setColor(color);
+        square->setS((l.toInt()+w.toInt())*2);
+
+        vshapes.emplace_back(square);
+
+        QUndoCommand *addCommand = new AddCommand(square, scene);
+        undoStack->push(addCommand);
+    }
+
 
 }
+}}
 
 
 void MainWindow::on_circleButton_clicked()
 {
+
+    bool exist=false;
     circle = new Circle();
 
     l=ui->radius->text();
     n=ui->circleName->text();
 
+    if(l==""||n==""){
+        QMessageBox::about(this,"Paint","Please fill all shape information");
+
+
+
+    }
+else{
+
+    if(vshapes.size()==0){
+        circle->setRadius(l.toInt());
+        circle->setS(3.14*2*l.toFloat());
+        circle->setName(n);
+        circle->setColor(color);
+
+
+
+         vshapes.emplace_back(circle);
+
+        QUndoCommand *addCommand = new AddCommand(circle, scene);
+        undoStack->push(addCommand);}
+
+    else{
+
+    for(int i=0; i<(int)( vshapes.size());i++){
+
+        if(n==vshapes[i]->getName())
+        {exist=true;}}
+
+    if(exist)
+        {
+            QMessageBox::about(this,"Name","this name is already exist...try different name");
+
+
+        }
+
+    else{
     circle->setRadius(l.toInt());
     circle->setS(3.14*2*l.toFloat());
     circle->setName(n);
@@ -84,12 +162,17 @@ void MainWindow::on_circleButton_clicked()
      vshapes.emplace_back(circle);
 
     QUndoCommand *addCommand = new AddCommand(circle, scene);
-    undoStack->push(addCommand);
+    undoStack->push(addCommand);}}
 
+
+
+}
 }
 
 void MainWindow::on_lineButton_clicked()
 {
+     bool exist=false;
+
     line = new Line();
 
     n=ui->lineName->text();
@@ -98,7 +181,14 @@ void MainWindow::on_lineButton_clicked()
     x2=ui->x2->text();
     y1=ui->y1->text();
     y2=ui->y2->text();
+    if(x1==""||n==""||x2==""||y1==""||y2==""){
+        QMessageBox::about(this,"Paint","Please fill all shape information");
 
+
+
+    }
+else{
+if(vshapes.size()==0){
     line->x1 =(x1.toInt());
     line->x2 =(x2.toInt());
     line->y1 =(y1.toInt());
@@ -111,13 +201,53 @@ void MainWindow::on_lineButton_clicked()
      vshapes.emplace_back(line);
 
     QUndoCommand *addCommand = new AddCommand(line, scene);
-    undoStack->push(addCommand);
-}
+    undoStack->push(addCommand);}
+
+else{
+
+for(int i=0; i<(int)( vshapes.size());i++){
+
+    if(n==vshapes[i]->getName())
+    {exist=true;}}
+
+if(exist)
+    {
+        QMessageBox::about(this,"Name","this name is already exist...try different name");
+
+
+    }
+
+else{    line->x1 =(x1.toInt());
+    line->x2 =(x2.toInt());
+    line->y1 =(y1.toInt());
+    line->y2 =(y2.toInt());
+    line->setName(n);
+    line->setColor(color);
+    line->setLineLength();
+    line->setS(line->getLineLength());
+
+     vshapes.emplace_back(line);
+
+    QUndoCommand *addCommand = new AddCommand(line, scene);
+    undoStack->push(addCommand);}
+
+
+
+
+
+}}}
 
 
 void MainWindow::on_searchButton_clicked()
 {
      n=ui->searchName->text();
+
+
+     if(n==""){
+         QMessageBox::about(this,"Paint","Please enter tha shape name");
+     }
+     else{
+
      bool exist=false;
 
 
@@ -139,7 +269,7 @@ void MainWindow::on_searchButton_clicked()
    }
 
 }
-
+}
 
 
 void MainWindow::on_redoButton_clicked()
@@ -156,7 +286,7 @@ void MainWindow::on_undoButton_clicked()
 {
     if(vshapes.size()==0)
     {
-       QMessageBox::about(this,"Shape","No shapes");
+       QMessageBox::about(this,"Paint","No shapes");
     }
 else{
     vundo.emplace_back(vshapes[vshapes.size()-1]);
@@ -257,7 +387,7 @@ void MainWindow::closeEvent (QCloseEvent *event)
 void MainWindow::on_sortAsButton_clicked()
 {
     if ((int)(vshapes.size())==0){
-         QMessageBox::about(this,"Shape","No shapes found");
+         QMessageBox::about(this,"Paint","No shapes found");
     }
     else {
         SORTLIST AS;
@@ -291,7 +421,7 @@ void MainWindow::on_sortAsButton_clicked()
 void MainWindow::on_sortDsButton_clicked()
 {
     if ((int)(vshapes.size())==0){
-         QMessageBox::about(this,"Shape","No shapes found");
+         QMessageBox::about(this,"Paint","No shapes found");
     }
     else {
           SORTLIST DS;
