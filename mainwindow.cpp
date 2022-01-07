@@ -75,7 +75,7 @@ void MainWindow::on_circleButton_clicked()
     n=ui->circleName->text();
 
     circle->setRadius(l.toInt());
-    circle->setS(3.14*2*l.toInt());
+    circle->setS(3.14*2*l.toFloat());
     circle->setName(n);
     circle->setColor(color);
 
@@ -269,27 +269,22 @@ void MainWindow::on_sortAsButton_clicked()
        }
 
        std::sort(objects.begin(),objects.end());
-//       for(int j=0; j<(int)(objects.size());j++){
-//           for(int i=0; i<(int)(vshapes.size());i++){
-//               if (objects[i]>objects[i+1]){
-//                   float y = objects[i];
-//                   objects[i]=objects[i+1];
-//                   objects[i+1]=y;
-//               }
-//           }
-//       }
+
          for(int j=0; j<(int)(objects.size());j++){
              for(int i=0; i<(int)(vshapes.size());i++){
+
                if (objects[j] == vshapes[i]->perimeter()){
-                   AS.info(i, vshapes[i]->getName(), vshapes[i]->perimeter() , vshapes[i]->getColor().name() );
+                   AS.info(j, vshapes[i]->getName(), vshapes[i]->perimeter() , vshapes[i]->getColor().name() );
                  }
 
 
    }
 }
+
          AS.setModal(true);
          AS.exec();
     }
+    objects.clear();
 }
 
 
@@ -306,18 +301,20 @@ void MainWindow::on_sortDsButton_clicked()
           objects.emplace_back(vshapes[i]->perimeter());
        }
 
-       std::sort(objects.begin(),objects.end());
+       std::sort(objects.rbegin(),objects.rend());
 
-         for(int j=(int)(objects.size());j>=0;j--){
+         for(int j=0 ; j<(int)(objects.size()) ; j++){
              for(int i=0; i<(int)(vshapes.size());i++){
+
                if (objects[j] == vshapes[i]->perimeter()){
-                    DS.info(i,vshapes[i]->getName(),vshapes[i]->perimeter() , vshapes[i]->getColor().name() );
+                    DS.info(j, vshapes[i]->getName(),vshapes[i]->perimeter() , vshapes[i]->getColor().name() );
                  }
               }
         }
           DS.setModal(true);
           DS.exec();
     }
+    objects.clear();
 }
 
 

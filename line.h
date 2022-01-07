@@ -24,7 +24,7 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    int getLineLength() const;
+    float getLineLength() const;
     void setLineLength();
 
 
@@ -41,7 +41,7 @@ public:
 
 
 private:
-    int lineLength;
+    float lineLength;
 
     QPoint p1;
     QPoint p2;

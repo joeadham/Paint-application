@@ -31,7 +31,7 @@ void Line::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     Q_UNUSED(widget)
 }
 
-int Line::getLineLength() const
+float Line::getLineLength() const
 {
     return lineLength;
 }
