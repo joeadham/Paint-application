@@ -16,6 +16,7 @@ SOURCES += \
     mainwindow.cpp \
     pen.cpp \
     shapes.cpp \
+    sortlist.cpp \
     square.cpp
 
 HEADERS += \
@@ -25,10 +26,12 @@ HEADERS += \
     mainwindow.h \
     pen.h \
     shapes.h \
+    sortlist.h \
     square.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    sortlist.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

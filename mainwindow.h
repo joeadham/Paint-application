@@ -20,6 +20,8 @@
 #include<QCloseEvent>
 #include<QStack>
 
+#include "sortlist.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -37,8 +39,9 @@ public:
     bool saveImage(const QString &filename, const char *fileformat);
 
     std::vector<std::shared_ptr<Shapes>> vshapes;
+    std::vector <float> objects;
 
-   std::vector<std::shared_ptr<Shapes>> vundo;
+    std::vector<std::shared_ptr<Shapes>> vundo;
 
 
 
@@ -85,5 +88,7 @@ void saveAsBitmap() ;
     bool saveDrawing(const QByteArray &fileFormat);
 
     void on_SaveButton_clicked();
+    void on_sortAsButton_clicked();
+    void on_sortDsButton_clicked();
 };
 #endif // MAINWINDOW_H

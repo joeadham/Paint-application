@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "sortlist.h"
 
-
+#include <algorithm>
+#include <QtAlgorithms>
 #include <QtWidgets>
 #include <QList>
 #include <QResizeEvent>
 #include <QDebug>
+#include <QVector>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -242,14 +245,6 @@ bool MainWindow::trySave() {
 
 
 
-
-
-
-
-
-
-
-
 void MainWindow::on_SaveButton_clicked()
 {
   saveAsBitmap();
@@ -258,3 +253,71 @@ void MainWindow::closeEvent (QCloseEvent *event)
 {
     trySave();
 }
+
+void MainWindow::on_sortAsButton_clicked()
+{
+    if ((int)(vshapes.size())==0){
+         QMessageBox::about(this,"Shape","No shapes found");
+    }
+    else {
+        SORTLIST AS;
+        AS.tabledisplay((int)(vshapes.size()));
+
+
+       for(int i=0 ; i<(int)(vshapes.size()) ; i++){
+          objects.emplace_back(vshapes[i]->perimeter());
+       }
+
+       std::sort(objects.begin(),objects.end());
+//       for(int j=0; j<(int)(objects.size());j++){
+//           for(int i=0; i<(int)(vshapes.size());i++){
+//               if (objects[i]>objects[i+1]){
+//                   float y = objects[i];
+//                   objects[i]=objects[i+1];
+//                   objects[i+1]=y;
+//               }
+//           }
+//       }
+         for(int j=0; j<(int)(objects.size());j++){
+             for(int i=0; i<(int)(vshapes.size());i++){
+               if (objects[j] == vshapes[i]->perimeter()){
+                   AS.info(i, vshapes[i]->getName(), vshapes[i]->perimeter() , vshapes[i]->getColor().name() );
+                 }
+
+
+   }
+}
+         AS.setModal(true);
+         AS.exec();
+    }
+}
+
+
+void MainWindow::on_sortDsButton_clicked()
+{
+    if ((int)(vshapes.size())==0){
+         QMessageBox::about(this,"Shape","No shapes found");
+    }
+    else {
+          SORTLIST DS;
+          DS.tabledisplay((int)(vshapes.size()));
+
+       for(int i=0 ; i<(int)(vshapes.size()) ; i++){
+          objects.emplace_back(vshapes[i]->perimeter());
+       }
+
+       std::sort(objects.begin(),objects.end());
+
+         for(int j=(int)(objects.size());j>=0;j--){
+             for(int i=0; i<(int)(vshapes.size());i++){
+               if (objects[j] == vshapes[i]->perimeter()){
+                    DS.info(i,vshapes[i]->getName(),vshapes[i]->perimeter() , vshapes[i]->getColor().name() );
+                 }
+              }
+        }
+          DS.setModal(true);
+          DS.exec();
+    }
+}
+
+
