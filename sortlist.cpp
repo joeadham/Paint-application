@@ -23,6 +23,10 @@ SORTLIST::~SORTLIST()
 
 
 void SORTLIST:: tabledisplay(int x){
+    table->setMaximumWidth(317);
+    table->setMinimumWidth(317);
+    table->setMaximumHeight(500);
+    table->setMinimumHeight(500);
     setrow(table , x);
     table->setColumnCount(3);
     QStringList hlabels;
