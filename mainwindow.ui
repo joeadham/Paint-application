@@ -481,25 +481,6 @@ font: 11pt &quot;Segoe UI&quot;;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>0</y>
-      <width>181</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="../Resources.qrc">:/resources/Paint-APP/img/Logo.jpeg</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
    <zorder>label</zorder>
    <zorder>graphicsView</zorder>
    <zorder>groupBox_5</zorder>
@@ -507,7 +488,6 @@ font: 11pt &quot;Segoe UI&quot;;</string>
    <zorder>horizontalLayoutWidget_5</zorder>
    <zorder>horizontalLayoutWidget_6</zorder>
    <zorder>groupBox</zorder>
-   <zorder>label_2</zorder>
   </widget>
   <action name="actionOpen">
    <property name="text">
@@ -533,8 +513,6 @@ font: 11pt &quot;Segoe UI&quot;;</string>
    </property>
   </action>
  </widget>
- <resources>
-  <include location="../Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
