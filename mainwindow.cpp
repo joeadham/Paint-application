@@ -65,7 +65,48 @@ void MainWindow::on_squareButton_clicked()
 {
     scene->setTypeFigure(PaintScene::SquareType);
     n=ui->shapeName->text();
-    scene->getShapeName(n);
+    bool exist=false;
+    if(n==""){
+        QMessageBox::about(this,"Paint","Please enter the shape name");
+    }
+
+
+    else{
+        if(scene->vshapes.size()==0){
+        scene->getShapeName(n);
+        }
+
+
+
+        else{
+
+        for(int i=0; i<(int)( scene->vshapes.size());i++){
+
+             if(n==scene->vshapes[i]->getName())
+             {exist=true;}
+
+       }
+            if(exist)
+            {
+            QMessageBox::about(this,"Name","this name is already exist...try different name");
+
+
+            }
+            else{
+                scene->getShapeName(n);
+                }
+
+
+         }
+
+
+
+}
+
+
+
+
+
 }
 
 
@@ -74,7 +115,49 @@ void MainWindow::on_circleButton_clicked()
 {
     scene->setTypeFigure(PaintScene::CircleType);
     n=ui->shapeName->text();
-    scene->getShapeName(n);
+
+
+
+
+    bool exist=false;
+    if(n==""){
+        QMessageBox::about(this,"Paint","Please enter the shape name");
+    }
+
+
+    else{
+        if(scene->vshapes.size()==0){
+        scene->getShapeName(n);
+        }
+
+
+
+        else{
+
+        for(int i=0; i<(int)( scene->vshapes.size());i++){
+
+             if(n==scene->vshapes[i]->getName())
+             {exist=true;}
+
+       }
+            if(exist)
+            {
+            QMessageBox::about(this,"Name","this name is already exist...try different name");
+
+
+            }
+            else{
+                scene->getShapeName(n);
+                }
+
+
+         }
+
+
+
+}
+
+
 
 
 }
@@ -83,7 +166,51 @@ void MainWindow::on_lineButton_clicked()
 {
     scene->setTypeFigure(PaintScene::LineType);
     n=ui->shapeName->text();
-    scene->getShapeName(n);
+
+
+
+
+
+
+    bool exist=false;
+    if(n==""){
+        QMessageBox::about(this,"Paint","Please enter the shape name");
+    }
+
+
+    else{
+        if(scene->vshapes.size()==0){
+        scene->getShapeName(n);
+        }
+
+
+
+        else{
+
+        for(int i=0; i<(int)( scene->vshapes.size());i++){
+
+             if(n==scene->vshapes[i]->getName())
+             {exist=true;}
+
+       }
+            if(exist)
+            {
+            QMessageBox::about(this,"Name","this name is already exist...try different name");
+
+
+            }
+            else{
+                scene->getShapeName(n);
+                }
+
+
+         }
+
+
+
+}
+
+
 }
 
 
