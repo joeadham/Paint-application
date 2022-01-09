@@ -38,7 +38,7 @@ float Line::getLineLength() const
 
 void Line::setLineLength()
 {
-    lineLength =sqrt(pow((x1-x2),2)-pow((y1-y2),2));
+    lineLength =sqrt(pow((x1-x2),2)+pow((y1-y2),2));
 }
 
 QPoint Line::getP1() const

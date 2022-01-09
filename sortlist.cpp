@@ -27,16 +27,13 @@ void SORTLIST:: tabledisplay(int x){
     table->setMinimumWidth(317);
     table->setMaximumHeight(500);
     table->setMinimumHeight(500);
-    setrow(table , x);
     table->setColumnCount(3);
+    table->setRowCount(x);
     QStringList hlabels;
     hlabels << "Name" << "Perimeter" << "Color" ;
     table->setHorizontalHeaderLabels(hlabels);
 }
 
-void SORTLIST::setrow(QTableWidget* y ,int x){
-    y->setRowCount(x);
-}
 
 void SORTLIST::  info (int x ,QString name , float perimeter , QString color)
 {

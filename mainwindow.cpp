@@ -212,7 +212,7 @@ for(int i=0; i<(int)( vshapes.size());i++){
 
 if(exist)
     {
-        QMessageBox::about(this,"Name","this name is already exist...try different name");
+        QMessageBox::about(this,"Name","this name already exists...try different name");
 
 
     }
@@ -244,7 +244,7 @@ void MainWindow::on_searchButton_clicked()
 
 
      if(n==""){
-         QMessageBox::about(this,"Paint","Please enter tha shape name");
+         QMessageBox::about(this,"Paint","Please enter the shape name");
      }
      else{
 
@@ -387,7 +387,7 @@ void MainWindow::closeEvent (QCloseEvent *event)
 void MainWindow::on_sortAsButton_clicked()
 {
     if ((int)(vshapes.size())==0){
-         QMessageBox::about(this,"Paint","No shapes found");
+         QMessageBox::about(this,"Paint","No shapes found..please draw a shape at first");
     }
     else {
         SORTLIST AS;
@@ -421,7 +421,7 @@ void MainWindow::on_sortAsButton_clicked()
 void MainWindow::on_sortDsButton_clicked()
 {
     if ((int)(vshapes.size())==0){
-         QMessageBox::about(this,"Paint","No shapes found");
+         QMessageBox::about(this,"Paint","No shapes found, please draw a shape at first");
     }
     else {
           SORTLIST DS;

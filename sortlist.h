@@ -18,7 +18,6 @@ public:
     explicit SORTLIST(QWidget *parent = nullptr);
     ~SORTLIST();
     void tabledisplay(int x);
-    void setrow(QTableWidget* y ,int x);
     void info (int x , QString name , float perimeter , QString color);
 
 
