@@ -2,7 +2,6 @@
 #define SQUARE_H
 
 #include "shapes.h"
-#include "pen.h"
 
 
 #include "QWidget"
@@ -15,7 +14,7 @@ class Square : public Shapes
 {
 
 public:
-    Square(QObject *parent = 0);
+    explicit Square(QPointF point,QObject *parent = 0);
     ~Square();
 
 

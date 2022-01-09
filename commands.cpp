@@ -17,23 +17,17 @@ AddCommand::~AddCommand()
 
 void AddCommand::undo()
 {
-
-//    QString n= myItem->getName();
-
-
-
     myGraphicsScene->removeItem(myItem);
     myGraphicsScene->update();
-
 }
 
 void AddCommand::redo()
 {
-
-
     myGraphicsScene->addItem(myItem);
+    myGraphicsScene->update();
     myGraphicsScene->clearSelection();
 
-
 }
+
+
 

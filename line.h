@@ -16,7 +16,7 @@ class Line : public Shapes
 
 public:
 
-    Line(QObject *parent = 0);
+    explicit Line(QPointF point,QObject *parent = 0);
     ~Line();
 
     QLineF setLine() const;
@@ -28,23 +28,12 @@ public:
     void setLineLength();
 
 
-    QPoint getP1() const;
-    void setP1(QPoint newP1);
 
-    QPoint getP2() const;
-    void setP2(QPoint newP2);
-
-    int x1;
-    int x2;
-    int y1;
-    int y2;
 
 
 private:
     float lineLength;
 
-    QPoint p1;
-    QPoint p2;
 
 };
 

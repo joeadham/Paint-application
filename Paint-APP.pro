@@ -14,7 +14,7 @@ SOURCES += \
     line.cpp \
     main.cpp \
     mainwindow.cpp \
-    pen.cpp \
+    paintscene.cpp \
     shapes.cpp \
     sortlist.cpp \
     square.cpp
@@ -24,7 +24,7 @@ HEADERS += \
     commands.h \
     line.h \
     mainwindow.h \
-    pen.h \
+    paintscene.h \
     shapes.h \
     sortlist.h \
     square.h
@@ -37,3 +37,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    ../Resources.qrc

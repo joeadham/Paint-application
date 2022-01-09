@@ -4,7 +4,6 @@
 #include<QUndoCommand>
 #include<QGraphicsScene>
 #include<shapes.h>
-#include"mainwindow.h"
 
 class AddCommand : public QUndoCommand
 {
@@ -16,15 +15,18 @@ public:
 
     ~AddCommand();
 
-
-
     void undo() override;
     void redo() override;
+    void mousePressEvent(QGraphicsSceneMouseEvent * event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+
 
 
 private:
 
     Shapes *myItem;
+    Shapes *temp;
     QGraphicsScene *myGraphicsScene;
 };
 

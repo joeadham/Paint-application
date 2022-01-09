@@ -2,11 +2,13 @@
 #define MAINWINDOW_H
 
 #include "square.h"
-#include "pen.h"
 #include "shapes.h"
 #include "circle.h"
 #include "line.h"
-#include<commands.h>
+#include "commands.h"
+#include "sortlist.h"
+#include "paintscene.h"
+
 
 #include <QMainWindow>
 #include <QtGui>
@@ -20,7 +22,7 @@
 #include<QCloseEvent>
 #include<QStack>
 
-#include "sortlist.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,16 +40,12 @@ public:
 
     bool saveImage(const QString &filename, const char *fileformat);
 
-    std::vector<std::shared_ptr<Shapes>> vshapes;
-    std::vector <float> objects;
-
-    std::vector<std::shared_ptr<Shapes>> vundo;
 
 
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *scene;
+    PaintScene *scene;
     Shapes *shape;
     Square *square;
     Circle *circle;

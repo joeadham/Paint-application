@@ -2,7 +2,7 @@
 #define CIRCLE_H
 
 #include "shapes.h"
-#include "pen.h"
+
 
 
 #include "QWidget"
@@ -17,7 +17,7 @@ class Circle : public Shapes
 
 public:
 
-    Circle(QObject *parent = 0);
+    explicit Circle(QPointF point,QObject *parent = 0);
     ~Circle();
 
     QRectF boundingRect() const;
