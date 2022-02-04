@@ -17,3 +17,4 @@
 ### -Search for a shape by name and display its properties
 ![Search results](https://user-images.githubusercontent.com/81246343/152597256-d68ba725-9150-4fc3-b036-cdb3bf1fc00c.jpg)
 
+### -Sort the shapes ascending or descending according to their perimiter values
